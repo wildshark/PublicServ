@@ -1,4 +1,4 @@
-<form action="https://fasto.dexignzone.com/xhtml/index.html">
+<form method="post" action="index.php">
     <div class="form-group">
         <label class="mb-1"><strong>Username</strong></label>
         <input type="text" name="username" class="form-control" placeholder="username">

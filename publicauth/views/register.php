@@ -15,6 +15,10 @@
         <label class="mb-1"><strong>District Assembly</strong></label>
         <input type="text" name="district" class="form-control" placeholder="district">
     </div>
+    <div class="form-group">
+        <label class="mb-1"><strong>Public Services</strong></label>
+        <input type="text" name="district" class="form-control" placeholder="district">
+    </div>
     <div class="text-center mt-4">
         <button type="submit" name="submit" value="district-signup" class="btn btn-primary btn-block">Sign me up</button>
     </div>

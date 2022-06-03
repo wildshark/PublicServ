@@ -36,23 +36,7 @@
 										<img src="images/logo-full.png" alt="">
 									</div>
                                     <h4 class="text-center mb-4">Sign up your account</h4>
-                                    <form action="https://fasto.dexignzone.com/xhtml/index.html">
-                                        <div class="form-group">
-                                            <label class="mb-1"><strong>Username</strong></label>
-                                            <input type="text" class="form-control" placeholder="username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="hello@example.com">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
-                                        </div>
-                                        <div class="text-center mt-4">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
-                                        </div>
-                                    </form>
+                                    <?php include($view)?>
                                     <div class="new-account mt-3">
                                         <p>Already have an account? <a class="text-primary" href="page-login.html">Sign in</a></p>
                                     </div>
