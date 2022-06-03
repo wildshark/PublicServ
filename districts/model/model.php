@@ -7,6 +7,7 @@ class districts{
         $sql ="SELECT * FROM `public_report`.`districts` LIMIT 0,1000";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
+        
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
     }
