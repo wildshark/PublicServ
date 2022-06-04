@@ -48,6 +48,4 @@ function userinfo(){
     <small>Admin</small>";
 }
 
-
-
 ?>

@@ -19,8 +19,6 @@ function connection($config){
     return $conn;
 }
 
-
-
 function UI_PAGE_LOGIN($page){
 
     if(!isset($_REQUEST['login'])){
