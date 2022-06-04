@@ -4,7 +4,7 @@ class publicauth{
 
     public static function signup($conn,$r){
 
-        $sql ="INSERT INTO `public_report`.`public_serv`(`distID`, `public_name`, `username`, `password`, `email`) VALUES (:, '1', '1', '1', '1')";
+        $sql ="INSERT INTO `public_report`.`public_serv`(`distID`, `public_name`, `username`, `password`, `email`) VALUES (:distr, '1', '1', '1', '1')";
         $stmt = $conn->prepare($sql);
         return $stmt->execute([
             ':usr'=>$r['username'],
@@ -16,13 +16,13 @@ class publicauth{
 
     public static function login($conn,$r){
 
-        $sql ="SELECT public_serv.* FROM public_serv WHERE public_serv.username = :usr AND public_serv.`password` = :pwd";
+        $sql ="SELECT public_serv.* FROM public_serv WHERE public_serv.email LIKE :usr AND public_serv.`password` = :pwd";
         $stmt = $conn->prepare($sql);
-        return $stmt->execute([
-            ':usr'=>$r['username'],
+        $stmt->execute([
+            ':usr'=>'%'.$r['username'].'%',
             ':pwd'=>$r['password']
         ]);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function list($conn,$r){
@@ -44,6 +44,8 @@ class publicauth{
         ]);
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+
 }
 
 ?>

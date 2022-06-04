@@ -36,14 +36,14 @@
 										<img src="images/logo-full.png" alt="">
 									</div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
-                                    <form action="https://fasto.dexignzone.com/xhtml/index.html">
+                                    <form method="post" action="index.php">
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <input type="email" name="username" class="form-control" value="hello@example.com">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" name="password" class="form-control" value="Password">
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">
@@ -57,11 +57,11 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                            <button type="submit" name="submit" value="<?=$btn['login']?>" class="btn btn-primary btn-block">Sign Me In</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
+                                        <p>Don't have an account? <a class="text-primary" href="<?=$href['signup']?>">Sign up</a></p>
                                     </div>
                                 </div>
                             </div>

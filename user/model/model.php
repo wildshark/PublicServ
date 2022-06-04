@@ -16,13 +16,13 @@ class client{
 
     public static function login($conn,$r){
 
-        $sql ="SELECT city_user.* FROM city_user WHERE city_user.username = :usr AND city_user.`password` = :pwd";
+        $sql ="SELECT city_user.* FROM city_user WHERE city_user.email LIKE :usr AND city_user.`password` = :pwd";
         $stmt = $conn->prepare($sql);
-        return $stmt->execute([
-            ':usr'=>$r['username'],
+        $stmt->execute([
+            ':usr'=>'%'.$r['username'].'%',
             ':pwd'=>$r['password']
         ]);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 
