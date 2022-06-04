@@ -3,7 +3,7 @@ session_start();
 
 include("control/control.php");
 include("control/global.php");
-include("control/load.php");
+include("control/autoload.php");
 
 include("govt/model/model.php");
 include("govt/model/function.php");
