@@ -1,13 +1,18 @@
 <?php
 
+$config ="deploy";
+$prefix ="json";
 $_TEMPLATE = array(
     "registeration"=>"frame/ui-register.php",
     "login"=>"frame/ui-login.php",
     "table"=>"frame/ui-table.php",
-    "404"=>"frame/ui-404.php"
-   
+    "404"=>"frame/ui-404.php"   
 );
 
+$c = array(
+    "domain"=>"iquipdigital.com",   
+    "config"=>"deploy"
+);
 
 function cmbDistrict($data){
 
@@ -42,5 +47,7 @@ function userinfo(){
     return"<span>$user</span>
     <small>Admin</small>";
 }
+
+
 
 ?>

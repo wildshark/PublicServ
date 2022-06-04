@@ -13,6 +13,9 @@
     </div>
     <div class="form-group">
         <label class="mb-1"><strong>District Assembly</strong></label>
+        <select name="cars" id="cars">
+            <?=cmbDistrict($data)?>
+        </select>
         <input type="text" name="district" class="form-control" placeholder="district">
     </div>
     <div class="form-group">

@@ -2,13 +2,13 @@
 
 class districts{
 
-    public static function all($conn,$r){
+    public static function all($conn){
 
         $sql ="SELECT * FROM `public_report`.`districts` LIMIT 0,1000";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
 

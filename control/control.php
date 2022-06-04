@@ -1,13 +1,13 @@
 <?php
 
-function connection(){
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-
+function connection($config){
+    $config = $config->server;
+    $servername = $config->host;
+    $username = $config->usr;
+    $password = $config->pwd;
+    $dbname = $config->dbm;
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=public_report", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        // echo "Connected successfully";
@@ -19,35 +19,38 @@ function connection(){
     return $conn;
 }
 
+
+
 function UI_PAGE_LOGIN($page){
 
     if(!isset($_REQUEST['login'])){
         $href['signup'] ="?reg=client";
     }else{
         switch($_REQUEST['login']){
-
+    
             case"govt";
                 $href['signup'] ="?reg=govt";
             break;
-    
+        
             case"district"; 
                 $href['signup'] ="?reg=district";
             break;
-    
-            case"public-serv";
+        
+            case"public-auth";
+                $data = district::all($conn);
                 $href['signup'] ="?reg=public-auth";
             break;
-    
+        
             default:
                 $href['signup'] ="?reg=client";
         }
-
     }    
     $btn['login'] = "login";
     require($page['login']);
 }
 
 function UI_PAGE_REGISTRATION($page){
+
     switch($_REQUEST['reg']){
 
         case"admin";
@@ -146,7 +149,7 @@ function UI_PAGE_DASHBOARD_PORTAL($conn,$page){
             }
         break;
 
-        case"pubser-portal";
+        case"pubauth-portal";
             $id = $_SESSION['userID'];
             if($_REQUEST['ui'] == "dashboard"){
                 $table_title = "

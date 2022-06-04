@@ -1,0 +1,13 @@
+{
+    "server":{
+        "host":"localhost",
+        "usr":"root",
+        "pwd":"",
+        "dbm":"public_report"
+    },
+    "application":{
+        "name":"",
+        "version":"",
+        "key":"$2y$10$O7V5vzJD9ET2nQHXw9tHvuQwnZ0oN9rbhp786Z4OpzR0xif3QelIK"
+    }
+}

@@ -1,7 +1,9 @@
 <?php
 session_start();
+
 include("control/control.php");
 include("control/global.php");
+include("control/load.php");
 
 include("govt/model/model.php");
 include("govt/model/function.php");
@@ -15,7 +17,7 @@ include("districts/model/function.php");
 include("user/model/model.php");
 include("user/model/function.php");
 
-$_CONN = connection();
+$_CONN = connection(json_decode(file_get_contents($c['config'])));
 
 if(isset($_REQUEST['exit'])){
     session_destroy();
@@ -38,6 +40,7 @@ if(!isset($_REQUEST['submit'])){
     switch($_REQUEST['submit']){
 
         case"login";
+            
             $response = client::login($_CONN,$_REQUEST);
             if($response == false){
                 $response = publicauth::login($_CONN,$_REQUEST);
@@ -73,18 +76,32 @@ if(!isset($_REQUEST['submit'])){
                         );
                     }
                 }else{
+                    $usr = md5($response['public_authID']);
+                    $_SESSION['userID'] = $response['public_authID'];
+                    setcookie("token",$usr);
+                    setcookie("district",$response['distID']);
+                    setcookie("username",$response['username']);
 
+                    $url=array(
+                        "main"=>"pubauth-portal",
+                        "ui"=>"dashboard",
+                        "token"=>$usr
+                    );
                 }
             }else{
                 //client
                 setcookie("user",$response['']);
                 setcookie("user",$response['']);
             }
-
+           
         break;
 
         case"public-auth";
-            $response = publicauth::signup($_CONN,$_REQUEST);
+            $_R[] = $_REQUEST['username'];
+            $_R[] = $_REQUEST['password'];
+            $_R[] = $_REQUEST['email'];
+            $_R[] = $_REQUEST['district'];
+            $response = publicauth::signup($_CONN,$_R);
             var_dump($response);
             exit;
         break;
